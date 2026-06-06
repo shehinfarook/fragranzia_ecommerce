@@ -1,0 +1,185 @@
+// Create one Razorpay order if payment is not COD
+    if (paymentMethod !== "COD") {
+      const options = {
+        amount: totalAmount * 100, // in paise
+        currency,
+        receipt: `receipt_${createdOrders[0]._id}`,
+      };
+
+
+      razorpayOrder = await razorpay.orders.create(options);
+
+
+      if (!razorpayOrder) {
+        return res
+          .status(500)
+          .json({ message: "Razorpay order creation failed" });
+      }
+
+      // Save razorpay ID to all orders
+
+    }
+
+    return res.status(201).json({
+      success: true,
+      paymentMethod,
+      message: "Orders created successfully from cart",
+      orders: createdOrders,
+      totalAmount,
+      razorpayOrder: razorpayOrder || null,
+    });
+
+    const razorpay = require("../utils/razorpay.js"); // Import Razorpay instance
+
+    const Razorpay = require("razorpay");
+const dotenv = require("dotenv");
+
+dotenv.config();
+
+
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
+
+module.exports = razorpay;
+
+const sendOrder = async () => {
+    try {
+      const response = await postOrder({ paymentMethod });
+
+      if (response?.success) {
+
+        if (response?.paymentMethod == "UPI") {
+          console.log("Razorpay Order =========  ", response?.razorpayOrder);
+
+          handlePayment(response?.razorpayOrder);
+        } else {
+          console.log("COD Order =========  ", response);
+
+          navigate("/order-success");
+        }
+      }
+      else {
+        toast.error(response?.message);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      console.error("Error sending order:", error);
+    }
+  };
+
+
+  const sendOrder = async () => {
+    try {
+      const response = await postOrder({ paymentMethod });
+
+      if (response?.success) {
+
+        if (response?.paymentMethod == "UPI") {
+          console.log("Razorpay Order =========  ", response?.razorpayOrder);
+
+          handlePayment(response?.razorpayOrder);
+        } else {
+          console.log("COD Order =========  ", response);
+
+          navigate("/order-success");
+        }
+      }
+      else {
+        toast.error(response?.message);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      console.error("Error sending order:", error);
+    }
+  };
+
+
+const handlePayment = async (data) => {
+    try {
+      console.log("==== handlePayment 1");
+
+      const isScriptLoaded = await loadRazorpayScript();
+      if (!isScriptLoaded) {
+        alert(
+          "Failed to load Razorpay SDK. Please check your internet connection."
+        );
+        return;
+      }
+
+      console.log("==== handlePayment 2");
+
+
+      // Initialize Razorpay
+      const options = {
+        key: "rzp_live_0m0wquv3dazfKx", // Replace with Razorpay Key ID
+        amount: data.amount,
+        currency: "INR",
+        name: "Cart7",
+        description: "Purchase Description",
+        order_id: data.id,
+        handler: async function (response) {
+
+          const verifyRes = await axios.post('http://localhost:3000/order/payment/verify-payment', {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          });
+
+          if (verifyRes.data.success) {
+            console.log("inside verifyRes.data.success");
+
+            //  navigate("/order-success");
+          } else {
+            alert("Payment Failed!");
+            console.log("elseeeeee");
+
+          }
+
+        },
+
+        // prefill: {
+        //   name: "John Doe",
+        //   email: "johndoe@example.com",
+        //   contact: "9999999999",
+        // },
+
+        theme: {
+          color: "#3399cc",
+        },
+      };
+
+      const rzp1 = new window.Razorpay(options);
+      rzp1.open();
+    } catch (error) {
+      console.error("Payment Error:--------------", error);
+    }
+  };
+
+
+
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      if (window.Razorpay) {
+        resolve(true);
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
+
+
+
+//   Test API Key  - rzp_test_SsgyFyQ1moVddq
+//   Test Key Secret - H9GpgsPuerHl4CXMumBhgI6U

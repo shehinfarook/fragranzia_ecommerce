@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Anton&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Orbitron:wght@400..900&family=Outfit:wght@100..900&family=Vend+Sans:ital,wght@0,300..700;1,300..700&family=Zen+Maru+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Alan+Sans:wght@300..900&family=Anton&family=Bungee+Spice&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Orbitron:wght@400..900&family=Outfit:wght@100..900&family=Play:wght@400;700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Preahvihear&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&family=Smooch+Sans:wght@100..900&family=Stack+Sans+Notch:wght@200..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Vend+Sans:ital,wght@0,300..700;1,300..700&family=Zen+Maru+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Alan+Sans:wght@300..900&family=Anton&family=Bungee+Spice&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Orbitron:wght@400..900&family=Outfit:wght@100..900&family=Play:wght@400;700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Preahvihear&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&family=Smooch+Sans:wght@100..900&family=Stack+Sans+Notch:wght@200..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Vend+Sans:ital,wght@0,300..700;1,300..700&family=Zen+Maru+Gothic&display=swap');
+
+@import "tailwindcss";
+
+* {
+  font-family: "Outfit", sans-serif;
+}
+
+@theme {
+  --color-primary: #00354B;
+  --color-primary-dull: #1F4D63;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.mainbannerImg {
+  background-image: linear-gradient(to bottom, #013146d6, #02425dcc, #0e3747cc), url(/src/assets/images/bab3135c7f2ed8a335cb9a00ac3c00ef33704e89.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mainSecbannerImg {
+  background-image: linear-gradient(to bottom, #C37400cc, #BE8736cc), url(/src/assets/images/bab3135c7f2ed8a335cb9a00ac3c00ef33704e89.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.loginImgArea {
+  background-image: url(/src/assets/images/9c74020bea95942fe85eb1d5ca6068cd932290d5.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.registerImgArea {
+  background-image: url(/src/assets/images/ec25b4b5e08d65f5173c15e1f91cde6f71eb4f06.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mainthreecard {
+  display: flex;
+  gap: 10px;
+  height: 400px;
+}
+
+.mainthreecard-box {
+  flex: 1;
+  transition: all 1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  border-radius: 6px;
+}
+
+.bg-one {
+  background-image: linear-gradient(to right, #020608ce, #041b2554), url(/src//assets//images/9a95452ac3a33a3c661ab148aa613e68717d0300.jpg);
+}
+
+.bg-two {
+  background-image: linear-gradient(to right, #020608ce, #041b2554), url(/src//assets//images/ec25b4b5e08d65f5173c15e1f91cde6f71eb4f06.jpg);
+}
+
+.bg-three {
+  background-image: linear-gradient(to right, #020608ce, #041b2554), url(/src//assets//images/345da007b677d098e336f1e606865c1d044da12d.jpg);
+}
+
+.mainthreecard-box.active {
+  flex: 2;
+}
+
+.mainthreecard:hover .mainthreecard-box {
+  flex: 1;
+}
+
+.mainthreecard .mainthreecard-box:hover {
+  flex: 2;
+}
+
+@media (max-width: 768px) {
+  .mainthreecard {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .mainthreecard-box {
+    flex: none;
+    height: 160px;
+  }
+
+  .mainthreecard:hover .mainthreecard-box {
+    flex: none;
+  }
+
+  .mainthreecard .mainthreecard-box:hover {
+    flex: none;
+  }
+}
+
+.productss{
+  gap: 4rem;
+}
+.main-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0.5rem 0; */
+  /* padding-left: 0.5rem;
+  padding-right: 0.5rem; */
+}
+.arrow-left {
+  /* padding-right: 0.5rem; */
+  margin-right: 0.8rem;
+}
+.arrow-right {
+  /* padding-left: 0.5rem; */
+  margin-left: 0.8rem;
+}
+.profile-dropdown {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: rgb(231, 224, 223);
+}
